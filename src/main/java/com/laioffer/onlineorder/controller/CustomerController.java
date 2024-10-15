@@ -20,4 +20,11 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
+
+
+    @PostMapping("/signup")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public void signUp(@RequestBody RegisterBody body) {
+        customerService.signUp(body.email(), body.password(), body.firstName(), body.lastName());
+    }
 }
